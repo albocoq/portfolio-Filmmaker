@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" aria-label="Previous" fill="white" color="white">
+  <!-- premier triangle -->
+  <path d="M18 7
+           Q18 6 17 6.5
+           L10 11
+           Q9 11.6 10 12
+           L17 16.5
+           Q18 17 18 16
+           Z"
+        fill="white"/>
+  <!-- deuxième triangle -->
+  <path d="M10 7
+           Q10 6 9 6.5
+           L2 11
+           Q1 11.6 2 12
+           L9 16.5
+           Q10 17 10 16
+           Z"
+        fill="white"/>
+</svg>
