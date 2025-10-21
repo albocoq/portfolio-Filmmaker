@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState, useRef, useEffect } from "react";
 import VideoControls from "./VideoControls";
+import SoundControl from "./SoundControl";
 
 export default function ProjectVideo({
   video,
@@ -18,8 +19,18 @@ export default function ProjectVideo({
   const [isOpen, setIsOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [light, setLight] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    setIsMuted(!video.muted);
+    video.muted = !video.muted;
+  };
 
   const togglePlayPause = () => {
     const video = videoRef.current;
@@ -74,7 +85,17 @@ export default function ProjectVideo({
   }, [isOpen]);
 
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full flex justify-center items-center relative">
+      <AnimatePresence>
+        {light && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="size-40 bg-white absolute -top-10 right-1/3 .-translate-x-full -z-10 blur-3xl"
+          />
+        )}
+      </AnimatePresence>
       <motion.div className="w-[min(30vw,300px)] aspect-[9/17] rounded-2xl overflow-hidden relative flex justify-center">
         <VideoControls
           image={image}
@@ -87,6 +108,12 @@ export default function ProjectVideo({
           onToggleOpen={() => setIsOpen(!isOpen)}
           onTogglePlayPause={togglePlayPause}
         />
+        <SoundControl
+          toogleMute={toggleMute}
+          isMuted={isMuted}
+          toggleLight={() => setLight(!light)}
+          isLight={light}
+        />
 
         <video
           ref={videoRef}
@@ -94,8 +121,8 @@ export default function ProjectVideo({
           className="w-full h-full object-cover"
           autoPlay
           loop
-          muted
           playsInline
+          muted
         />
         <div className="absolute bottom-2 h-0.75 w-1/3 bg-white rounded-full" />
       </motion.div>
