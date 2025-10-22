@@ -78,7 +78,7 @@ export default function Accroche() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
-                Breathe life
+                Creative minds.
               </motion.h2>
             </div>
             <div className="h-[115px] flex items-center justify-center overflow-hidden">
@@ -89,7 +89,7 @@ export default function Accroche() {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                into your ideas
+                Lifestyle vibes.
               </motion.h2>
             </div>
           </div>

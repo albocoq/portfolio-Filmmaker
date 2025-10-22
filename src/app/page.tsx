@@ -7,8 +7,8 @@ export default function Home() {
       <Hero
         title="SACHA FILMS"
         description={[
-          `Cinematography studio <br /> based in Amsterdam`,
-          `Unleashing the power of <br /> visual storytelling`,
+          `Creative film studio <br /> born in Málaga`,
+          `Bringing stories to life <br /> through motion`,
         ]}
       />
       <ProjectsGrid />

@@ -11,7 +11,7 @@ export default function ProjectCarrousel({ images }: { images: string[] }) {
 
   return (
     <div
-      className="w-[95%] overflow-hidden relative"
+      className="w-[99%] overflow-hidden relative"
       style={{
         transform: "perspective(1200px) rotate(358deg)",
       }}

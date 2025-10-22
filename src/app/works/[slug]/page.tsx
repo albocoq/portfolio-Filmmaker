@@ -17,19 +17,15 @@ export default async function WorkPage({
     .replaceAll("%20", " ")
     .replaceAll("%C3%98", "Ø")
     .replaceAll("%C3%A9", "é")
-    .replaceAll("%C3%A0", "à");
+    .replaceAll("%C3%A0", "à")
+    .replaceAll("%C3%BA", "ú");
 
   const imagesDir = path.join(process.cwd(), "public/image", slug + "/");
   let images: string[] = [];
   try {
     images = fs
       .readdirSync(imagesDir)
-      .filter(
-        (file) =>
-          file.toLowerCase().endsWith(".jpg") ||
-          file.toLowerCase().endsWith(".jpeg") ||
-          file.toLowerCase().endsWith(".png")
-      )
+      .filter((file) => file.toLowerCase().endsWith(".webp"))
       .map((file) => `/image/${slug}/${file}`);
   } catch (e) {
     images = [];

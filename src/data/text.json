@@ -7,9 +7,9 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "cinematographer": "SachaFilms",
-      "sound": "SachaFilms",
-      "client": "Cosa Nostra",
+      "DJ": "@iiamgago",
+      "artista": "@youngcister",
+      "sala": "BRØ, Málaga",
       "year": "2025"
     },
     "sections": [
@@ -35,9 +35,9 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "camara": "Periscacho & SachaFilms",
-      "asistente": "maccdalma",
-      "client": "El Yandi",
+      "camara": "@periscacho & @sachafilms_",
+      "asistente": "@maccdalma",
+      "artista": "@elyandijroficial",
       "sala": "Malafama, Málaga",
       "year": "2024"
     },
@@ -56,8 +56,8 @@
       }
     ]
   },
-  "DJ-Gago": {
-    "title": "DJ-Gago",
+  "Gago-x-Jesús-LC": {
+    "title": "Gago-x-Jesús-LC",
     "category": "aftermovie",
     "url": "https://res.cloudinary.com/dyppvumej/video/upload/v1760980509/principal_imx23t.mp4",
     "color": "#f0fcfb",
@@ -65,7 +65,8 @@
     "credits": {
       "director": "SachaFilms",
       "camara": "SachaFilms",
-      "creador de contenido": "Camashow",
+      "DJ": "@iiamgago @jesuuslc",
+      "creador de contenido": "@camashow_",
       "sala": "Cosa Nuestra, Málaga",
       "year": "2025"
     },
@@ -93,7 +94,8 @@
     "credits": {
       "director": "SachaFilms",
       "camara": "SachaFilms",
-      "creador de contenido": "Camashow",
+      "DJ": "@flamingo.dj @tonitegaa",
+      "creador de contenido": "@camashow_",
       "sala": "Santa Rita, Málaga",
       "year": "2025"
     },
@@ -120,9 +122,9 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "camara": "SachaFilms & Christofer",
-      "montaje": "Christofer",
-      "artista": "Cremadesss",
+      "camara": "@sachafilms_ & @cfernaandez.05",
+      "montaje": "@cfernaandez.05",
+      "artista": "@cremadesssol",
       "year": "2025"
     },
     "sections": [
@@ -148,8 +150,8 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "camara": "SachaFilms",
-      "DJ": "Dylan",
+      "camara": "@sachafilms_",
+      "DJ": "@dylan_rabaud",
       "sala": "Maison blanche, Cognac",
       "year": "2025"
     },
@@ -176,8 +178,8 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "camara": "SachaFilms & Christofer",
-      "artista": "Afroboy",
+      "camara": "@sachafilms_ & @ferz.film005",
+      "artista": "@4fro3oy",
       "year": "2025"
     },
     "sections": [
@@ -203,9 +205,9 @@
     "director": "SachaFilms",
     "credits": {
       "director": "SachaFilms",
-      "camara": "SachaFilms",
-      "DJ": "Toni Tega",
-      "creador de contenido": "Charly Delor",
+      "camara": "@sachafilms_",
+      "DJ": "@tonitegaa",
+      "creador de contenido": "@charliedelor",
       "year": "2025"
     },
     "sections": [

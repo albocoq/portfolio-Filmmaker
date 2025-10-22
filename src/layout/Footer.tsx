@@ -42,14 +42,45 @@ const footerSections = [
 
 export default function Footer() {
   const pathname = usePathname();
+
   return (
     <>
       {pathname !== "/contact" && <Accroche />}
 
-      <footer className="flex flex-col gap-4 items-center justify-center text-secondary font-fjalla-one-placeholder m-8 uppercase">
-        <div className="flex gap-10">
+      <motion.footer
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+        viewport={{ once: true }}
+        className="flex flex-col gap-8 items-center justify-center text-secondary font-fjalla-one-placeholder m-8 uppercase"
+      >
+        {/* Première ligne */}
+        <motion.div
+          className="flex gap-10"
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+              },
+            },
+          }}
+        >
           {footerSections.slice(0, 2).map((section, index) => (
-            <div key={index} className="flex gap-2">
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 12 }}
+              className="flex gap-2"
+            >
               <p className="text-5xl">{section.title}</p>
               <div
                 className={`flex items-end ${
@@ -66,12 +97,34 @@ export default function Footer() {
                   </FlipLink>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="flex gap-10">
+        </motion.div>
+
+        {/* Deuxième ligne */}
+        <motion.div
+          className="flex gap-10"
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+              },
+            },
+          }}
+        >
           {footerSections.slice(2).map((section, index) => (
-            <div key={index} className="flex gap-2">
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 12 }}
+              className="flex gap-2"
+            >
               <p className="text-5xl">{section.title}</p>
               <div
                 className={`flex items-end ${
@@ -88,15 +141,15 @@ export default function Footer() {
                   </FlipLink>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </footer>
+        </motion.div>
+      </motion.footer>
     </>
   );
 }
 
-const DURATION = 0.25;
+const DURATION = 0.35;
 const STAGGER = 0.025;
 
 const FlipLink = ({
@@ -116,7 +169,7 @@ const FlipLink = ({
       try {
         await navigator.clipboard.writeText(href);
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => setCopied(false), 1500);
       } catch (err) {
         console.error("Failed to copy:", err);
       }
@@ -127,6 +180,7 @@ const FlipLink = ({
     <motion.a
       initial="initial"
       whileHover="hovered"
+      whileTap={{ scale: 0.95 }}
       href={copyable ? undefined : href}
       onClick={handleClick}
       className={`relative block overflow-hidden whitespace-nowrap font-black uppercase ${
@@ -134,19 +188,18 @@ const FlipLink = ({
       }`}
       style={{
         lineHeight: 1,
+        perspective: 600,
       }}
       title={copied ? "Copied!" : copyable ? "Click to copy" : undefined}
     >
-      <div>
+      {/* Texte normal */}
+      <div className="relative z-10">
         {children.split("").map((l, i) => (
           <motion.span
+            key={i}
             variants={{
-              initial: {
-                y: 0,
-              },
-              hovered: {
-                y: "-100%",
-              },
+              initial: { rotateX: 0, y: 0 },
+              hovered: { rotateX: -90, y: -2 },
             }}
             transition={{
               duration: DURATION,
@@ -154,41 +207,41 @@ const FlipLink = ({
               delay: STAGGER * i,
             }}
             className="inline-block"
-            key={i}
           >
             {l}
           </motion.span>
         ))}
       </div>
-      <div className="absolute inset-0">
+
+      {/* Texte au survol */}
+      <div className="absolute inset-0 z-0 text-secondary">
         {children.split("").map((l, i) => (
           <motion.span
+            key={i}
             variants={{
-              initial: {
-                y: "100%",
-              },
-              hovered: {
-                y: 0,
-              },
+              initial: { rotateX: 90, y: 2 },
+              hovered: { rotateX: 0, y: 0 },
             }}
             transition={{
               duration: DURATION,
               ease: "easeInOut",
               delay: STAGGER * i,
             }}
-            className="inline-block"
-            key={i}
+            className="inline-block drop-shadow-[0_0_4px_rgba(180,100,255,0.4)]"
           >
             {l}
           </motion.span>
         ))}
       </div>
+
+      {/* Message Copied */}
       {copied && (
         <motion.span
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
-          className="absolute -top-8 left-0 text-xs normal-case"
+          transition={{ duration: 0.25 }}
+          className="absolute -top-6 left-0 text-xs normal-case text-secondary"
         >
           Copied!
         </motion.span>

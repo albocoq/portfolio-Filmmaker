@@ -1,7 +1,7 @@
 "use client";
 
 import text from "@/data/text.json";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 export default function VerticalCarousel({
