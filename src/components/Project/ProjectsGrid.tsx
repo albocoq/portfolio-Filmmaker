@@ -2,14 +2,15 @@
 
 import ProjectCard from "./ProjectCard";
 import text from "@/data/text.json";
+import { Project } from "./ProjectCard";
 
 export default function ProjectsGrid() {
-  const projects = Object.keys(text).map((key) => ({
-    id: key,
-    title: text[key as keyof typeof text].title,
-    category: text[key as keyof typeof text].category,
-    video: text[key as keyof typeof text].url,
-    color: text[key as keyof typeof text].color,
+  const projects: Project[] = Object.entries(text).map(([id, value]) => ({
+    id,
+    title: value.title,
+    category: value.category,
+    video: value.url,
+    color: value.color,
   }));
 
   return (

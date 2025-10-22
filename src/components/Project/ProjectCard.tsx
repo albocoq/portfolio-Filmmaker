@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
-interface Project {
+export interface Project {
   id: string;
   title: string;
   category: string;
@@ -24,7 +24,13 @@ export default function ProjectCard({
   delay = 0.1,
   className = "",
 }: ProjectCardProps) {
-  const [hoverColor, setHoverColor] = useState<string>("");
+  const [isHovered, setIsHovered] = useState(false);
+
+  const displayTitle = useMemo(
+    () => project.title.replaceAll("-", " "),
+    [project.title]
+  );
+
   return (
     <motion.a
       href={`/works/${project.title}`}
@@ -33,16 +39,14 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: delay + index * 0.1 }}
       viewport={{ once: true }}
-      className={`relative overflow-hidden rounded-3xl p-2 bg-surface transition-all duration-700 ease group cursor-pointer ${className}`}
-      style={{ backgroundColor: hoverColor || undefined }}
-      onMouseEnter={() => setHoverColor(project.color)}
-      onMouseLeave={() => setHoverColor("")}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`relative overflow-hidden rounded-3xl p-2 transition-all duration-700 ease-out cursor-pointer ${className}`}
+      style={{ backgroundColor: isHovered ? project.color : "var(--surface)" }}
     >
-      <div className="aspect-[3/3] bg-gray-200 relative overflow-hidden rounded-[20px] cursor-default">
+      <div className="aspect-[3/3] relative overflow-hidden rounded-[20px]">
         <video
           src={project.video}
-          width={300}
-          height={300}
           autoPlay
           loop
           muted
@@ -52,17 +56,23 @@ export default function ProjectCard({
       </div>
 
       <div className="px-2 my-4 uppercase overflow-hidden h-10 text-start">
-        <div className="translate-y-4 group-hover:opacity-0 group-hover:-translate-y-5 transition-all duration-700 ease-out">
-          <h3 className="text-lg leading-none text-primary font-fjalla-one-placeholder ">
-            {project.title.replaceAll("-", " ")}
+        <div
+          className={`transition-all duration-700 ease-out ${
+            isHovered ? "opacity-0 -translate-y-5" : "opacity-100 translate-y-0"
+          }`}
+        >
+          <h3 className="text-lg leading-none text-primary font-fjalla-one-placeholder">
+            {displayTitle}
           </h3>
-          <p className="text-gray-600 text-sm leading-none opacity-0">
-            {project.category}
-          </p>
         </div>
-        <div className="translate-y-4 group-hover:opacity-100 group-hover:-translate-y-6 transition-all duration-700 ease-out">
+
+        <div
+          className={`absolute transition-all duration-700 ease-out ${
+            isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
           <h3 className="text-lg leading-none text-gray-600 font-fjalla-one-placeholder">
-            {project.title.replaceAll("-", " ")}
+            {displayTitle}
           </h3>
           <p className="text-gray-600 text-sm leading-none">
             {project.category}
@@ -72,5 +82,3 @@ export default function ProjectCard({
     </motion.a>
   );
 }
-
-export type { Project };
