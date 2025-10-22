@@ -1,39 +1,60 @@
 "use client";
 
 import text from "@/data/text.json";
-import { motion } from "motion/react";
-import { useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  AnimatePresence,
+} from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 export default function VerticalCarousel({
   selectedCategory,
 }: {
   selectedCategory: string;
 }) {
-  const projects = Object.keys(text).map((key) => ({
+  const projects = Object.entries(text).map(([key, value]) => ({
     id: key,
-    title: text[key as keyof typeof text].title,
-    category: text[key as keyof typeof text].category,
-    video: text[key as keyof typeof text].url,
-    color: text[key as keyof typeof text].color,
+    title: value.title,
+    category: value.category,
+    video: value.url,
+    color: value.color,
   }));
-  const filteredProjects =
+
+  const filtered =
     selectedCategory === "all"
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((p) => p.category === selectedCategory);
 
-  const [isHovered, setIsHovered] = useState("");
+  const items = [...filtered, ...filtered, ...filtered];
 
-  const tripledProjects = [
-    ...filteredProjects,
-    ...filteredProjects,
-    ...filteredProjects,
-  ].map((project, index) => ({
-    ...project,
-    uniqueId: `${project.id}-${index}`,
-  }));
+  const y = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    y.stop();
+
+    y.set(0);
+
+    const controls = animate(y, -100 / 3, {
+      duration: 20,
+      repeat: Infinity,
+      ease: "linear",
+      repeatType: "loop",
+    });
+
+    return () => controls.stop();
+  }, [filtered.length]);
+
+  const translateY = useTransform(y, (v) => `${v}%`);
+
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <div
+      ref={containerRef}
       className="relative h-[75vh] overflow-hidden"
       style={{
         maskImage:
@@ -41,65 +62,70 @@ export default function VerticalCarousel({
       }}
     >
       <motion.div
-        className="flex flex-col items-center gap-10 py-10"
-        animate={{
-          y: [0, -33.333 + "%"],
-        }}
-        transition={{
-          y: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 20,
-            ease: "linear",
-          },
-        }}
-        onHoverStart={() => setIsHovered("pause")}
-        onHoverEnd={() => setIsHovered("")}
+        className="flex flex-col items-center gap-10 py-10 will-change-transform"
+        style={{ y: translateY }}
       >
-        {tripledProjects.map((project, index) => (
-          <motion.a
-            layout
-            key={project.uniqueId}
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: index * 0.1 }}
-            href={`/works/${project.title}`}
-            className="flex items-end gap-4 relative"
-            onHoverStart={() => setIsHovered(project.uniqueId)}
-            onHoverEnd={() => setIsHovered("")}
-          >
-            <h3 className="font-fjalla-one-placeholder text-5xl uppercase">
-              {project.title.replaceAll("-", " ")}
-            </h3>
-            <p className="font-poppins text-secondary">{project.category}</p>
-            <motion.div
-              className="w-[250px] h-[200px] rounded-2xl absolute left-[85%] overflow-hidden"
-              initial={{
-                opacity: 0,
-                transform: "perspective(1000px) rotate(10deg)",
-                filter: "blur(10px)",
-              }}
-              animate={{
-                opacity: isHovered === project.uniqueId ? 1 : 0,
-                transform: "perspective(1000px) rotate(10deg)",
-                filter:
-                  isHovered === project.uniqueId ? "blur(0px)" : "blur(10px)",
-              }}
-              transition={{ duration: 0.3 }}
+        {items.map((project, i) => {
+          const uniqueId = `${project.id}-${i}`;
+          const isActive = hoveredId === uniqueId;
+
+          return (
+            <motion.a
+              layout
+              key={uniqueId}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: i * 0.1 }}
+              href={`/works/${project.title}`}
+              className="relative flex items-end gap-4 cursor-pointer"
+              onMouseEnter={() => setHoveredId(uniqueId)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              <video
-                src={project.video}
-                width={300}
-                height={300}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </motion.a>
-        ))}
+              <h3 className="font-fjalla-one-placeholder text-5xl uppercase">
+                {project.title.replaceAll("-", " ")}
+              </h3>
+              <p className="font-poppins text-secondary">{project.category}</p>
+
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    className="absolute left-[85%] w-[250px] h-[200px] rounded-2xl overflow-hidden shadow-lg"
+                    initial={{
+                      opacity: 0,
+                      y: 10,
+                      scale: 0.95,
+                      filter: "blur(10px)",
+                      transform: "perspective(1000px) rotate(0deg)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      filter: "blur(0px)",
+                      transform: "perspective(1000px) rotate(10deg)",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      filter: "blur(10px)",
+                      transform: "perspective(1000px) rotate(0deg)",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <video
+                      src={project.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.a>
+          );
+        })}
       </motion.div>
     </div>
   );

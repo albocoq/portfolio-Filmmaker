@@ -3,12 +3,14 @@
 import { motion } from "motion/react";
 import TextEffect from "./TextEffect";
 import { ScreenFitText } from "./ScreenFitText";
+import PaparazziBackground from "./PaparazziBackground";
 
 export default function Hero({
   title,
   description,
   color,
   small,
+  light,
 }: {
   title: string;
   description:
@@ -16,9 +18,12 @@ export default function Hero({
     | { text: string; isSelected?: boolean; onClick?: () => void }[];
   color?: string;
   small?: boolean;
+  light?: boolean;
 }) {
   return (
     <section className="flex flex-col items-center justify-center p-5 px-10 gap-5">
+      {light && <PaparazziBackground color={color ?? "s"} />}
+
       <div
         className={`flex items-center justify-center ${
           small ? "h-[110px]" : "h-[260px]"

@@ -75,7 +75,7 @@ export default function Footer() {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 80, damping: 12 }}
@@ -119,7 +119,7 @@ export default function Footer() {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 80, damping: 12 }}
@@ -192,14 +192,17 @@ const FlipLink = ({
       }}
       title={copied ? "Copied!" : copyable ? "Click to copy" : undefined}
     >
-      {/* Texte normal */}
       <div className="relative z-10">
         {children.split("").map((l, i) => (
           <motion.span
             key={i}
             variants={{
-              initial: { rotateX: 0, y: 0 },
-              hovered: { rotateX: -90, y: -2 },
+              initial: {
+                y: 0,
+              },
+              hovered: {
+                y: "-100%",
+              },
             }}
             transition={{
               duration: DURATION,
@@ -213,14 +216,17 @@ const FlipLink = ({
         ))}
       </div>
 
-      {/* Texte au survol */}
-      <div className="absolute inset-0 z-0 text-secondary">
+      <div className="absolute inset-0 text-secondary">
         {children.split("").map((l, i) => (
           <motion.span
             key={i}
             variants={{
-              initial: { rotateX: 90, y: 2 },
-              hovered: { rotateX: 0, y: 0 },
+              initial: {
+                y: "100%",
+              },
+              hovered: {
+                y: 0,
+              },
             }}
             transition={{
               duration: DURATION,

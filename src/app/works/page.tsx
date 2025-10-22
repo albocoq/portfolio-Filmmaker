@@ -29,6 +29,7 @@ export default function WorksPage() {
           },
         ]}
         small
+        
       />
 
       <VerticalCarousel selectedCategory={selectedCategory} />

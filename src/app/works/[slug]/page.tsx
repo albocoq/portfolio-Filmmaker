@@ -37,7 +37,12 @@ export default async function WorkPage({
 
   return (
     <main className="min-h-screen pt-44 flex flex-col gap-24">
-      <Hero title={slug} description={[category ?? "Music"]} color={color} />
+      <Hero
+        title={slug}
+        description={[category ?? "Music"]}
+        color={color}
+        light
+      />
       <ProjectCarrousel images={images} />
       <ProjectCredits slug={slug} />
       <ProjectVideo
