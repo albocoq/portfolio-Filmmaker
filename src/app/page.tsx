@@ -7,7 +7,7 @@ export default function Home() {
       <Hero
         title="SACHA FILMS"
         description={[
-          `Creative film studio <br /> born in Málaga`,
+          `Creative film maker <br /> born in Málaga`,
           `Bringing stories to life <br /> through motion`,
         ]}
       />

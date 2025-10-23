@@ -6,8 +6,8 @@ import { Suspense } from "react";
 import SmoothScroller from "@/hook/Lenis";
 
 export const metadata: Metadata = {
-  title: "sacha FILMS - Cinematography studio based in Amsterdam",
-  description: "Unleashing the power of visual storytelling",
+  title: "sacha FILMS - Creative film maker born in Málaga",
+  description: "Bringing stories to life through motion",
 };
 
 export default function RootLayout({
