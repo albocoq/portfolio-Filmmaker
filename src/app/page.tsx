@@ -3,7 +3,7 @@ import ProjectsGrid from "@/components/Project/ProjectsGrid";
 
 export default function Home() {
   return (
-    <main className="min-h-screen pt-44 flex flex-col gap-15">
+    <main className="min-h-screen pt-16 sm:pt-44 flex flex-col gap-15">
       <Hero
         title="SACHA FILMS"
         description={[

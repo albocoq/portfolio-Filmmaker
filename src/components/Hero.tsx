@@ -22,7 +22,7 @@ export default function Hero({
 }) {
   return (
     <section className="flex flex-col items-center justify-center p-5 px-10 gap-5">
-      {light && <PaparazziBackground color={color ?? "s"} />}
+      {light && <PaparazziBackground color={color ?? ""} />}
 
       <div
         className={`flex items-center justify-center ${
@@ -38,14 +38,14 @@ export default function Hero({
           <ScreenFitText
             text={title.replaceAll("-", " ")}
             color={color}
-            minFontSize={small ? 60 : 100}
+            minFontSize={small ? 40 : 20}
             maxFontSize={small ? 120 : 280}
           />
         </motion.div>
       </div>
 
       <div
-        className={`flex place-content-around ${small ? "w-2/5" : "w-full"}`}
+        className={`flex flex-col sm:flex-row gap-2 place-content-around ${small ? "w-2/5" : "w-full"}`}
       >
         {description.map((item, index) => (
           <motion.h2

@@ -9,7 +9,7 @@ export default function ProjectDescription({ slug }: { slug: string }) {
       {description.sections.map((section, index) => (
         <div
           key={index}
-          className="w-1/2 flex flex-col gap-2 justify-center items-center"
+          className="sm:w-1/2 flex flex-col gap-2 justify-center items-center"
         >
           <h1 className="text-2xl leading-10 font-fjalla-one-placeholder uppercase">
             {section.title}

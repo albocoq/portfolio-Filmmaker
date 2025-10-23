@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import TextEffect from "@/components/TextEffect";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
@@ -71,7 +72,7 @@ export default function Header() {
         >
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-black hover:text-gray-600 transition-colors"
+            className="text-white hover:text-gray-600 transition-colors"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -81,27 +82,27 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
-            <a
-              href="#works"
+            <Link
+              href="/works"
               className="block px-3 py-2 text-black hover:text-gray-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Works
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              href="/about"
               className="block px-3 py-2 text-black hover:text-gray-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               About
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/contact"
               className="block px-3 py-2 text-black hover:text-gray-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Let&apos;s Talk
-            </a>
+            </Link>
           </div>
         </div>
       )}

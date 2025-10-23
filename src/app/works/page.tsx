@@ -8,7 +8,7 @@ export default function WorksPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   return (
-    <main className="min-h-screen pt-44 flex flex-col gap-15">
+    <main className="min-h-screen pt-16 sm:pt-44 flex flex-col gap-15">
       <Hero
         title="All Works"
         description={[
@@ -29,7 +29,7 @@ export default function WorksPage() {
           },
         ]}
         small
-        
+
       />
 
       <VerticalCarousel selectedCategory={selectedCategory} />

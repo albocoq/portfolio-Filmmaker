@@ -55,11 +55,10 @@ export default function Footer() {
           ease: "easeOut",
         }}
         viewport={{ once: true }}
-        className="flex flex-col gap-8 items-center justify-center text-secondary font-fjalla-one-placeholder m-8 uppercase"
+        className="flex flex-col gap-8 sm:items-center justify-center text-secondary font-fjalla-one-placeholder m-8 uppercase"
       >
-        {/* Première ligne */}
         <motion.div
-          className="flex gap-10"
+          className="flex flex-col sm:flex-row gap-10"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -79,7 +78,7 @@ export default function Footer() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 80, damping: 12 }}
-              className="flex gap-2"
+              className="flex flex-col sm:flex-row gap-2"
             >
               <p className="text-5xl">{section.title}</p>
               <div
@@ -101,9 +100,8 @@ export default function Footer() {
           ))}
         </motion.div>
 
-        {/* Deuxième ligne */}
         <motion.div
-          className="flex gap-10"
+          className="flex flex-col sm:flex-row gap-10"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -123,7 +121,7 @@ export default function Footer() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 80, damping: 12 }}
-              className="flex gap-2"
+              className="flex flex-col sm:flex-row gap-2"
             >
               <p className="text-5xl">{section.title}</p>
               <div
@@ -240,7 +238,6 @@ const FlipLink = ({
         ))}
       </div>
 
-      {/* Message Copied */}
       {copied && (
         <motion.span
           initial={{ opacity: 0, y: 6 }}

@@ -81,7 +81,7 @@ export default function VerticalCarousel({
               onMouseEnter={() => setHoveredId(uniqueId)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              <h3 className="font-fjalla-one-placeholder text-5xl uppercase">
+              <h3 className="font-fjalla-one-placeholder text-5xl uppercase truncate">
                 {project.title.replaceAll("-", " ")}
               </h3>
               <p className="font-poppins text-secondary">{project.category}</p>

@@ -12,7 +12,6 @@ export default function Accroche() {
   const { scrollYProgress } = useScroll();
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
-  // ✅ Calcul des projets optimisé
   const projects = useMemo(
     () =>
       Object.keys(text).map((key) => ({
@@ -25,7 +24,6 @@ export default function Accroche() {
     []
   );
 
-  // ✅ Récupération des projets suivants mémoïsée
   const nextProjects = useMemo(() => {
     if (!pathname.includes("works/")) return projects.slice(0, 2);
     const currentProjectSlug = pathname.split("/works/")[1];
@@ -57,11 +55,11 @@ export default function Accroche() {
             {nextProjects.map((project, index) => {
               const isFirst = index === 0;
               const cardClass = `
-                w-1/4 h-full transition-all duration-700 ease-out will-change-transform
+                w-full sm:w-1/4 h-full transition-all duration-700 ease-out will-change-transform
                 ${
                   isFirst
-                    ? "translate-x-1/2 group-hover:translate-x-0 group-hover:rotate-[-15deg]"
-                    : "-translate-x-1/2 group-hover:translate-x-0 group-hover:rotate-[15deg]"
+                    ? "translate-x-1/2 sm:group-hover:translate-x-0 sm:group-hover:rotate-[-15deg]"
+                    : "translate-y-full sm:translate-y-0 -translate-x-1/2 sm:group-hover:translate-x-0 sm:group-hover:rotate-[15deg]"
                 }
               `;
               return (
@@ -80,7 +78,7 @@ export default function Accroche() {
             {["Creative minds.", "Lifestyle vibes."].map((text, i) => (
               <motion.h2
                 key={text}
-                className="text-8xl font-fjalla-one-placeholder h-[110px] flex items-center justify-center overflow-hidden"
+                className="text-7xl sm:text-8xl font-fjalla-one-placeholder sm:h-[110px] flex items-center justify-center overflow-hidden"
                 initial={{ opacity: 0, y: "100%" }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}

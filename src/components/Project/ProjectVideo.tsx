@@ -96,7 +96,7 @@ export default function ProjectVideo({
           />
         )}
       </AnimatePresence>
-      <motion.div className="w-[min(30vw,300px)] aspect-[9/17] rounded-2xl overflow-hidden relative flex justify-center">
+      <motion.div className="w-[75vw] sm:w-[min(30vw,300px)] aspect-[9/17] rounded-2xl overflow-hidden relative flex justify-center">
         <VideoControls
           image={image}
           title={title}
