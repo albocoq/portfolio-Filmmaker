@@ -21,17 +21,15 @@ export default function GlobalCursorEvents() {
         }
       }
 
-      // Continue de mettre à jour tant qu'il y a un élément survolé
       if (currentElement) {
         rafId.current = requestAnimationFrame(updateElementRect);
       }
     };
 
     const handleOver = (e: MouseEvent) => {
-      let target = e.target as HTMLElement | null;
+      const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Trouver le parent pertinent
       const link = target.closest("a");
       const button = target.closest("button");
 
@@ -41,7 +39,6 @@ export default function GlobalCursorEvents() {
         setHoveredElement(link.getBoundingClientRect());
         setColor(link.id);
 
-        // Démarrer la boucle d'animation
         if (rafId.current) cancelAnimationFrame(rafId.current);
         rafId.current = requestAnimationFrame(updateElementRect);
         return;
@@ -71,7 +68,6 @@ export default function GlobalCursorEvents() {
       setCursorType("default");
       setHoveredElement(null);
 
-      // Arrêter la boucle d'animation
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
         rafId.current = null;
@@ -83,7 +79,6 @@ export default function GlobalCursorEvents() {
       setHoveredElement(null);
       setCursorType("default");
 
-      // Arrêter la boucle d'animation
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
         rafId.current = null;
@@ -97,7 +92,6 @@ export default function GlobalCursorEvents() {
       window.removeEventListener("mouseover", handleOver);
       window.removeEventListener("mouseout", handleLeave);
 
-      // Nettoyer la boucle d'animation
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
       }

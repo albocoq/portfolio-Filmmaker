@@ -16,7 +16,6 @@ export default function SmoothScroller() {
   useLayoutEffect(() => {
     lenis.current = new Lenis({
       smoothWheel: true,
-      // Customize other instance settings here
     });
 
     const resize = setInterval(() => {
