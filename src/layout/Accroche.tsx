@@ -64,6 +64,7 @@ export default function Accroche() {
               `;
               return (
                 <ProjectCard
+                  noAnime
                   key={project.id}
                   project={project}
                   className={cardClass}
@@ -74,7 +75,7 @@ export default function Accroche() {
         </div>
       ) : (
         <div className="flex flex-col items-center text-center relative">
-          <div className="absolute z-10">
+          <div className="absolute">
             {["Creative minds.", "Lifestyle vibes."].map((text, i) => (
               <motion.h2
                 key={text}

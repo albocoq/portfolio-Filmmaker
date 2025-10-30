@@ -77,7 +77,7 @@ export default function VerticalCarousel({
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: i * 0.1 }}
               href={`/works/${project.title}`}
-              className="relative flex items-end gap-4 cursor-pointer"
+              className="relative flex items-end gap-4 "
               onMouseEnter={() => setHoveredId(uniqueId)}
               onMouseLeave={() => setHoveredId(null)}
             >

@@ -16,6 +16,7 @@ interface ProjectCardProps {
   index?: number;
   delay?: number;
   className?: string;
+  noAnime?: boolean;
 }
 
 export default function ProjectCard({
@@ -23,6 +24,7 @@ export default function ProjectCard({
   index = 0,
   delay = 0.1,
   className = "",
+  noAnime = false,
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -33,6 +35,7 @@ export default function ProjectCard({
 
   return (
     <motion.a
+      id={project.color + "-" + noAnime}
       href={`/works/${project.title}`}
       key={project.id}
       initial={{ opacity: 0, y: 30 }}
@@ -41,8 +44,7 @@ export default function ProjectCard({
       viewport={{ once: true }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden rounded-3xl p-2 transition-all duration-700 ease-out cursor-pointer ${className}`}
-      style={{ backgroundColor: isHovered ? project.color : "var(--surface)" }}
+      className={`relative overflow-hidden rounded-3xl p-2 transition-all duration-700 ease-out z-6 ${className}`}
     >
       <div className="aspect-[3/3] relative overflow-hidden rounded-[20px]">
         <video

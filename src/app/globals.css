@@ -26,6 +26,9 @@
 }
 
 @layer base {
+  * {
+    cursor: none;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-primary);

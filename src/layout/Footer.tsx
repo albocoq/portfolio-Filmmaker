@@ -182,7 +182,7 @@ const FlipLink = ({
       href={copyable ? undefined : href}
       onClick={handleClick}
       className={`relative block overflow-hidden whitespace-nowrap font-black uppercase ${
-        copyable ? "cursor-pointer" : ""
+        copyable ? "" : ""
       }`}
       style={{
         lineHeight: 1,

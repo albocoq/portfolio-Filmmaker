@@ -25,7 +25,7 @@ export default function Hero({
       {light && <PaparazziBackground color={color ?? ""} />}
 
       <div
-        className={`flex items-center justify-center ${
+        className={`flex items-center justify-center z-1 ${
           small ? "h-[110px]" : "h-[260px]"
         } overflow-hidden w-full`}
       >
@@ -45,7 +45,9 @@ export default function Hero({
       </div>
 
       <div
-        className={`flex flex-col sm:flex-row gap-2 place-content-around ${small ? "w-2/5" : "w-full"}`}
+        className={`flex flex-col sm:flex-row gap-2 place-content-around z-1 ${
+          small ? "w-2/5" : "w-full"
+        }`}
       >
         {description.map((item, index) => (
           <motion.h2

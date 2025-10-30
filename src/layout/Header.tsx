@@ -42,7 +42,11 @@ export default function Header() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="flex space-x-4 font-fjalla-one-placeholder ">
-            <TextEffect text="WORKS" url="/works" className="text-header" />
+            <TextEffect
+              text="WORKS"
+              url="/works"
+              className="text-header"
+            />
             <TextEffect text="ABOUT" url="/about" className="text-header" />
           </div>
           <motion.a

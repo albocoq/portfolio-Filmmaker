@@ -68,7 +68,7 @@ export default function VideoControls({
       animate={isOpen ? "open" : "closed"}
       variants={videoVariants}
       whileTap={{ scale: isOpen ? 1 : 0.9 }}
-      className="absolute top-3 bg-black rounded-full cursor-pointer z-10 flex flex-col place-content-between gap-1 overflow-hidden"
+      className="absolute top-3 bg-black rounded-full  z-10 flex flex-col place-content-between gap-1 overflow-hidden"
       onClick={onToggleOpen}
       data-video-controls
     >
@@ -141,7 +141,7 @@ export default function VideoControls({
             <MediaIcon
               name={isPlaying ? "play" : "stop"}
               size={34}
-              className="cursor-pointer"
+              className=""
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 onTogglePlayPause();

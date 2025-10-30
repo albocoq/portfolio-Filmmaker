@@ -46,8 +46,8 @@ export default function TextEffect({
     );
   } else if (onClick) {
     return (
-      <div
-        className={className + " overflow-hidden relative h-fit cursor-pointer"}
+      <button
+        className={className + " overflow-hidden relative h-fit z-6"}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={onClick}
@@ -69,7 +69,7 @@ export default function TextEffect({
         >
           {text}
         </motion.p>
-      </div>
+      </button>
     );
   }
   return <div className={className}>{text}</div>;

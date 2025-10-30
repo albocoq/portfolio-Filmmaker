@@ -61,9 +61,9 @@ export default function ContactTemplate({
         {title}
       </motion.h1>
 
-      <motion.div
+      <motion.button
         whileTap={{ scale: 0.97 }}
-        className="text-5xl font-fjalla-one-placeholder tracking-tight leading-[90%] text-center cursor-pointer select-none relative"
+        className="text-5xl font-fjalla-one-placeholder tracking-tight leading-[90%] text-center  select-none relative"
         onClick={copyToClipboard}
         title="Click to copy"
       >
@@ -96,7 +96,7 @@ export default function ContactTemplate({
             </motion.span>
           )}
         </AnimatePresence>
-      </motion.div>
+      </motion.button>
     </motion.div>
   );
 }
