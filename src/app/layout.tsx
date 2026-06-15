@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
 import { Suspense } from "react";
-import SmoothScroller from "@/hook/Lenis";
+import SmoothScroller from "@/hooks/Lenis";
 import CustomCursor from "@/components/CustomCursor";
 import GlobalCursorEvents from "@/components/GlobalCursorEvents";
 

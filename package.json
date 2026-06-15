@@ -2,6 +2,16 @@
   "name": "sacha-films",
   "version": "0.1.0",
   "private": true,
+  "description": "Portfolio interactif de Sacha Films — aftermovies, clips vidéo et projets audiovisuels",
+  "author": "Sacha Films",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albocoq/portfolio-sacha-films.git"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",

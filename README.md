@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sacha Films — Portfolio
 
-## Getting Started
+Portfolio interactif du réalisateur **Sacha Films** (Málaga, Espagne). Aftermovies, clips vidéo et projets audiovisuels, avec un player custom, scroll fluide et curseur animé.
 
-First, run the development server:
+## Stack
+
+- [Next.js 15](https://nextjs.org/) (App Router, Turbopack)
+- [React 19](https://react.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Motion](https://motion.dev/) — animations
+- [Lenis](https://github.com/darkroomengineering/lenis) — smooth scroll
+- [Zustand](https://zustand.docs.pmnd.rs/) — état global (curseur)
+
+## Prérequis
+
+- Node.js 20+
+- [pnpm](https://pnpm.io/)
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande       | Description              |
+| -------------- | ------------------------ |
+| `pnpm dev`     | Serveur de développement |
+| `pnpm build`   | Build de production      |
+| `pnpm start`   | Serveur de production    |
+| `pnpm lint`    | Lint ESLint              |
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/              # Pages (/, /works, /works/[slug], /contact)
+├── components/       # UI (Hero, curseur, projets, vidéo…)
+├── data/text.json    # Contenu des projets
+├── hooks/            # Hooks React (Lenis, etc.)
+├── layout/           # Header, Footer
+└── stores/           # Stores Zustand
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Ajouter un projet
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Édite `src/data/text.json`. Chaque entrée correspond à un slug (`/works/[slug]`) :
 
-## Deploy on Vercel
+```json
+{
+  "Mon-Projet": {
+    "title": "Mon Projet",
+    "category": "aftermovie",
+    "url": "https://…/video.mp4",
+    "color": "#fe2653",
+    "director": "SachaFilms",
+    "credits": { "director": "SachaFilms", "year": "2025" },
+    "sections": [
+      { "title": "Overview", "content": "…" }
+    ]
+  }
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Catégories supportées : `aftermovie`, `videoclip`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Déploiement
+
+Compatible avec [Vercel](https://vercel.com/) ou tout hébergeur Node.js :
+
+```bash
+pnpm build
+pnpm start
+```
+
+## Licence
+
+Projet privé — © Sacha Films. Code source maintenu par [albocoq](https://github.com/albocoq).
