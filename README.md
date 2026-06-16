@@ -1,82 +1,40 @@
-# Sacha Films — Portfolio
+# 🎬 Sacha Films — Creative Filmmaker Portfolio
 
-Portfolio interactif du réalisateur **Sacha Films** (Málaga, Espagne). Aftermovies, clips vidéo et projets audiovisuels, avec un player custom, scroll fluide et curseur animé.
+*Note: This repository highlights the frontend development, advanced UI animations, and media integration built for Sacha Films, a creative filmmaker based in Málaga.*
 
-## Stack
+🔗 **[Visit the live website here](https://portfolio-sacha-films.vercel.app/)**
 
-- [Next.js 15](https://nextjs.org/) (App Router, Turbopack)
-- [React 19](https://react.dev/)
-- [Tailwind CSS 4](https://tailwindcss.com/)
-- [Motion](https://motion.dev/) — animations
-- [Lenis](https://github.com/darkroomengineering/lenis) — smooth scroll
-- [Zustand](https://zustand.docs.pmnd.rs/) — état global (curseur)
+## 📖 Overview
 
-## Prérequis
+**Sacha Films** is a premium, highly interactive web portfolio designed to bring stories to life through motion. Built with a dark, cinematic aesthetic, the website focuses on delivering a seamless, immersive experience. The architecture prioritizes fluid animations, heavy typography, and dynamic video integration to showcase the filmmaker's projects—ranging from music videos to after-movies—without compromising on performance.
 
-- Node.js 20+
-- [pnpm](https://pnpm.io/)
+## ⚡ Tech Stack
 
-## Installation
+*   **Frontend Framework:** [Next.js](https://nextjs.org/) (React)
+*   **Deployment:** [Vercel](https://vercel.com/)
+*   **Styling & Animations:** Tailwind CSS / Custom CSS (with advanced cursor-tracking and scroll animations)
+*   **Media Hosting:** Optimized video & image delivery for fast loading.
 
-```bash
-pnpm install
-pnpm dev
-```
+## ✨ Key Features & Technical Highlights
 
-Ouvre [http://localhost:3000](http://localhost:3000).
+*   **Cinematic UI/UX:** A deep, dark-themed interface utilizing large, bold typography that mimics a movie poster aesthetic.
+*   **Dynamic Media Integration:** Features auto-playing video previews on hover and custom-styled vertical video players for mobile-first content (e.g., TikTok/Reels style clips).
+*   **Advanced Animations:** Implementation of complex interactive elements, such as project thumbnails that smoothly track and follow the user's cursor across the screen in the "All Works" section.
+*   **Category Filtering:** A dynamic, instant-filtering system allowing users to sort the portfolio by categories like *After Movie* and *Video Clip* without page reloads.
+*   **Interactive Contact Module:** A sleek footer section featuring "Click-to-Copy" functionality for the email address and phone number, providing instant user feedback.
 
-## Scripts
+## 📸 Interface Previews
 
-| Commande       | Description              |
-| -------------- | ------------------------ |
-| `pnpm dev`     | Serveur de développement |
-| `pnpm build`   | Build de production      |
-| `pnpm start`   | Serveur de production    |
-| `pnpm lint`    | Lint ESLint              |
+*(Instructions: Take some high-quality screenshots of the site and add them here to give recruiters a quick visual overview).*
 
-## Structure
+### Hero Section & Typography
+![Hero Preview](./screenshot-hero.png)
 
-```
-src/
-├── app/              # Pages (/, /works, /works/[slug], /contact)
-├── components/       # UI (Hero, curseur, projets, vidéo…)
-├── data/text.json    # Contenu des projets
-├── hooks/            # Hooks React (Lenis, etc.)
-├── layout/           # Header, Footer
-└── stores/           # Stores Zustand
-```
+### Dynamic Project Grid
+![Project Grid Preview](./screenshot-grid.png)
 
-## Ajouter un projet
+### Project Detail & Vertical Video Integration
+![Project Detail Preview](./screenshot-project.png)
 
-Édite `src/data/text.json`. Chaque entrée correspond à un slug (`/works/[slug]`) :
-
-```json
-{
-  "Mon-Projet": {
-    "title": "Mon Projet",
-    "category": "aftermovie",
-    "url": "https://…/video.mp4",
-    "color": "#fe2653",
-    "director": "SachaFilms",
-    "credits": { "director": "SachaFilms", "year": "2025" },
-    "sections": [
-      { "title": "Overview", "content": "…" }
-    ]
-  }
-}
-```
-
-Catégories supportées : `aftermovie`, `videoclip`.
-
-## Déploiement
-
-Compatible avec [Vercel](https://vercel.com/) ou tout hébergeur Node.js :
-
-```bash
-pnpm build
-pnpm start
-```
-
-## Licence
-
-Projet privé — © Sacha Films. Code source maintenu par [albocoq](https://github.com/albocoq).
+### Interactive Cursor-Tracking Gallery
+![All Works Preview](./screenshot-works.png)
